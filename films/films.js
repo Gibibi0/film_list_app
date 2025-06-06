@@ -5,6 +5,11 @@ const randomFilmBtn = document.getElementById('randomFilmBtn')
 
 let films = []
 
+const savedFilms = localStorage.getItem('films')
+if (savedFilms) {
+	films = JSON.parse(savedFilms)
+}
+
 function renderList() {
 	filmList.innerHTML = ''
 
@@ -24,6 +29,8 @@ function renderList() {
 
 		filmList.appendChild(li)
 	})
+
+	localStorage.setItem('films', JSON.stringify(films))
 }
 
 addFilmBtn.addEventListener('click', () => {
